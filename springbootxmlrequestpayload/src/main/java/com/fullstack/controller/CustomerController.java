@@ -25,10 +25,15 @@ public class CustomerController {
 
     @PostMapping(
             value = "/saveall",
-            consumes = MediaType.APPLICATION_XML_VALUE,
-            produces = MediaType.APPLICATION_XML_VALUE
+            consumes = "application/xml",
+            produces = "application/xml"
     )
     public ResponseEntity<List<Customer>> saveAll(@RequestBody CustomerList customerList) {
+
+        if (customerList == null || customerList.getCustomers() == null) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
         return new ResponseEntity<>(
                 customerService.saveAll(customerList.getCustomers()),
                 HttpStatus.CREATED

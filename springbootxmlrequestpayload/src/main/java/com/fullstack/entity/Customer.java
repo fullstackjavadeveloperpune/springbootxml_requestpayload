@@ -38,7 +38,7 @@ public class Customer {
     // API- Status wise customer count
    // Hint - Map Status, Long
 
-    
+
 
 
 }
